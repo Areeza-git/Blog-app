@@ -1,0 +1,21 @@
+<h2> Add comment <h2>
+<%= form_with model: [@article, @article.comments.build] do |form| %>
+    <p>
+        <%= form.label :commenter %>
+        <%= form.text_field :commenter%>
+    </p>
+
+    <p>
+        <%= form.label :content %>
+        <%= form.text_area :content %>
+    </p>
+
+    <p>
+        <%= form.label :status %>
+        <%= form.select :status, Visible::VALID_STATUSES, selected: @article.status || 'public' %>
+    </p>
+
+    <p>
+        <%= form.submit "Add comment"%>
+    </p>
+<%end%>

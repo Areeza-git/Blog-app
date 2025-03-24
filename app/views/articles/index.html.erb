@@ -1,0 +1,18 @@
+<h1> All Articles</h1>
+<p>Our blog app has <%= Article.public_count %> articles and we are counting more....</p>
+<ul>
+    <% @articles.each do |article| %>
+        <% unless article.archived? %>
+            <li>
+                <%= article.title %>
+                <%= article.description %>
+                <%= link_to 'View', article_path(article) %>
+                <%= link_to 'Delete', article_path(article), data:{
+                    turbo_method: :delete,
+                    turbo_confirm: 'Are you sure?'
+                } %>
+            </li> 
+        <%end%>
+    <% end %>
+</ul>
+<%= link_to 'Add article', new_article_path %>
