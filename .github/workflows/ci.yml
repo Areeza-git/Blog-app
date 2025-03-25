@@ -38,6 +38,8 @@ jobs:
           ruby-version: .ruby-version
           bundler-cache: true
 
+      
+
       - name: Scan for security vulnerabilities in JavaScript dependencies
         run: bundle exec importmap audit
 
@@ -53,8 +55,11 @@ jobs:
           ruby-version: .ruby-version
           bundler-cache: true
 
+      - name: Install dependencies
+        run: bundle install
+
       - name: Lint code for consistent style
-        run: bin/rubocop -f github
+        run: bundle exec rubocop -f github
 
   test:
     runs-on: ubuntu-latest
